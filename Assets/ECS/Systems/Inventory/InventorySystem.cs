@@ -1,6 +1,7 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Mathematics;
 
 namespace RPG.ECS.Inventory
 {
@@ -52,12 +53,13 @@ namespace RPG.ECS.Inventory
                     // If couldn't stack, add new entry if there's room
                     if (!success && items.Length < container.MaxSlots)
                     {
+                        int maxStack = req.MaxStack > 0 ? req.MaxStack : 1;
                         items.Add(new ItemElement
                         {
                             NameHash = req.ItemNameHash,
                             Stack = req.Amount,
-                            MaxStack = 1,
-                            Type = ItemType.Item
+                            MaxStack = maxStack,
+                            Type = req.Type
                         });
                         success = true;
                     }

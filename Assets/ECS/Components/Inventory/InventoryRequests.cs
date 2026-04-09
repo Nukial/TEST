@@ -16,6 +16,12 @@ namespace RPG.ECS.Inventory
 
         /// <summary>Amount to add.</summary>
         public int Amount;
+
+        /// <summary>Maximum stack size for the item. Defaults to 1 if not set.</summary>
+        public int MaxStack;
+
+        /// <summary>Item type.</summary>
+        public ItemType Type;
     }
 
     /// <summary>
